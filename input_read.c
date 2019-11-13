@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_read.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tmaarela <tmaarela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 14:57:33 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/11/13 17:52:18 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/11/13 18:18:11 by tmaarela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,8 @@ int		validate(int fd, char *out[26], char *file)
 			ft_putendl(piece[i++]);
 		}
 
-			ft_putendl("!!!!");
-		if (validate_piece(piece) == NULL)
-		{
+		if ((out[j] = validate_piece(piece)) == NULL)
 			return (-1);
-		}
-		ft_putendl("CCCCCC");
 		++j;
 		get_next_line(fd, &line);
 		ft_strdel(&line);

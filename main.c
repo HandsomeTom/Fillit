@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tmaarela <tmaarela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 14:57:35 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/11/13 17:55:54 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/11/13 18:23:57 by tmaarela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,21 @@ int main(int argc, char **argv)
 		int fd = open(argv[1], O_RDONLY);
 		if (fd > 0)
 		{
-			piece_count = validate(fd, &pieces, argv[1]);
+			piece_count = validate(fd, pieces, argv[1]);
+			ft_putendl(ft_itoa(piece_count));
+			if (piece_count <= 0)
+			{
+				ft_putendl("ERROR\n");
+				return (1);
+			}
 			// pieces = input_read(fd);
 
-			ft_putendl("????");
+			//ft_putendl("????");
 			int x = 0;
 			while (x < piece_count)
 			{
-				// printf("%s\n", pieces[x++]);
+				//printf("%s\n", pieces[x++]);
+				x++;
 			}
 		}
 	}
