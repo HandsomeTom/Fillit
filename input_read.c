@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 14:57:33 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/11/13 16:58:57 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/11/13 17:52:18 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "fillit.h"
 #include <stdio.h>
 
-int		validate(int fd, char **out)
+int		validate(int fd, char *out[26], char *file)
 {
 	char	*line;
 	char	*piece[4];
@@ -22,23 +22,29 @@ int		validate(int fd, char **out)
 	int		i;
 	int		j;
 
-	ft_putendl("CCCCCC");
 
 	piece_count = validate_file(fd);
+	ft_putendl(ft_itoa(piece_count));
 
+	fd = open(file, O_RDONLY);
 	j = 0;
 	while (j < piece_count)
 	{
 		i = 0;
 		while (i < 4)
 		{
-			get_next_line(fd, &line);
-			piece[i++] = line;
+			int ret = get_next_line(fd, &line);
+			piece[i] = line;
+			ft_putendl(piece[i++]);
 		}
 
-		if ((out[j++] = validate_piece(piece)) == NULL)
+			ft_putendl("!!!!");
+		if (validate_piece(piece) == NULL)
+		{
 			return (-1);
-
+		}
+		ft_putendl("CCCCCC");
+		++j;
 		get_next_line(fd, &line);
 		ft_strdel(&line);
 	}

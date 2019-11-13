@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 12:16:53 by tmaarela          #+#    #+#             */
-/*   Updated: 2019/11/13 16:59:06 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/11/13 17:23:22 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ int		validate_file(int fd)
 		i++;
 		str++;
 	}
+
+	close(fd);
 	return (retmagic(ret));
 }
 
