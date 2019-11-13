@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_file.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmaarela <tmaarela@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 12:16:53 by tmaarela          #+#    #+#             */
-/*   Updated: 2019/11/12 19:09:13 by tmaarela         ###   ########.fr       */
+/*   Updated: 2019/11/13 16:59:06 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,14 @@ int		retmagic(int ret)
 		return (ret / 20.5);
 }
 
-int		validate_piece(int fd)
+int		validate_file(int fd)
 {
 	int		ret;
 	int		i;
 	int		row;
 	char	*str;
 
+	ft_putendl("AAAAA");
 	i = 1;
 	row = 1;
 	if (!(str = (char *)malloc(550)))
@@ -63,14 +64,13 @@ int		validate_piece(int fd)
 	return (retmagic(ret));
 }
 
-int main(int argc, char **argv)
-{
-	int fd;
-
-	fd = open(argv[1], O_RDONLY);
-	printf("RETURN: %d\n", validate_piece(fd));
-	return (0);
-}
+// int main(int argc, char **argv)
+// {
+// 	int fd;
+// 	fd = open(argv[1], O_RDONLY);
+// 	printf("RETURN: %d\n", validate_piece(fd));
+// 	return (0);
+// }
 
 		// printf("%d  ", row);
 		// printf("%d  ", i);
