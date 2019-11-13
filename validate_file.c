@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 12:16:53 by tmaarela          #+#    #+#             */
-/*   Updated: 2019/11/13 17:23:22 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/11/13 18:39:42 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int		validate_file(int fd)
 	int		row;
 	char	*str;
 
-	ft_putendl("AAAAA");
 	i = 1;
 	row = 1;
 	if (!(str = (char *)malloc(550)))
