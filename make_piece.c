@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 13:40:42 by tmaarela          #+#    #+#             */
-/*   Updated: 2019/11/15 14:43:20 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/11/15 17:47:18 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,12 @@ t_piece	*make_piece(char *str, char letter)
 			if (((y * 4) + x) < len
 				&& str[(y * 4) + x] == '#')
 			{
-				temp->coords[x][y] = 1;
+				temp->coords[y][x] = 1;
 			}
 			else
 			{
-				temp->coords[x][y] = 0;
+				temp->coords[y][x] = 0;
 			}
-
 			++x;
 		}
 		x = 0;

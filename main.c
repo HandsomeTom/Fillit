@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 14:57:35 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/11/15 15:04:16 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/11/15 17:49:46 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,38 @@ int main(int argc, char **argv)
 			array[0] = make_piece(pieces[0], 'A');
 			array[1] = make_piece(pieces[1], 'B');
 
+			// int y = 0;
+			// while (y < 4)
+			// {
+			// 	int x = 0;
+			// 	while (x < 4)
+			// 	{
+			// 		ft_putstr(ft_itoa(array[0]->coords[y][x]));
+			// 		++x;
+			// 	}
+			// 	ft_putendl("");
+			// 	++y;
+			// }
+
 			int size = 4;
-			char map[size][size];
-			ft_memset(map, '.', size*size);
+			char **map = malloc(sizeof(char *) * size);
+			map[0] = malloc(5);
+			map[1] = malloc(5);
+			map[2] = malloc(5);
+			map[3] = malloc(5);
+			// ft_memset(map[0], '.', size);
+			// ft_memset(map[1], '.', size);
+			// ft_memset(map[2], '.', size);
+			// ft_memset(map[3], '.', size);
 
-			char **solution = smallest_square(NULL, size, array, 2);
+			char **solution = smallest_square(map, size, array, 2);
 
-			int y = 0;
-			while (y < 4)
-			{
-				printf("%s\n", map[size]);
-			}
+			// int y = 0;
+			// while (y < 4)
+			// {
+			// 	printf("%s\n", map[y++]);
+			// }
+
 			// t_piece *temp = make_piece(pieces[0]);
 			// int x = 0;
 			// while (y < 4)
