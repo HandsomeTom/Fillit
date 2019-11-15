@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 11:26:51 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/11/15 17:36:09 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/11/15 18:51:27 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,29 @@ int		empty(char **map2D, int posX, int posY, t_piece *tet)
 {
 	int ok = 0;
 
-	int y = 0;
+	ft_putendl("asdadgasf");
 
+	int y = 0;
 	while (y < 4)
 	{
 		int x = 0;
 		while (x < 4)
 		{
-			if (tet->coords[y][x] == 1 && map2D[posY + y][posX + x] == 0)
+			ft_putstr(ft_itoa(tet->coords[y][x]));
+			ft_putchar(map2D[posY + y][posX + x]);
+			if (tet->coords[y][x] == 1 && map2D[posY + y][posX + x] == '.')
+			{
 				++ok;
+				// ft_putchar('o');
+			}
+			// else
+				// ft_putchar('i');
 			++x;
 		}
+		ft_putchar('\n');
 		++y;
 	}
+	ft_putendl(ft_itoa(ok));
 	return (ok == 4);
 }
 
@@ -42,12 +52,13 @@ void	put(char **map2D, int posX, int posY, t_piece *tet)
 		int x = 0;
 		while (x < 4)
 		{
-			// ft_putendl("coords");
+			// ft_putendl("sdjhgadhgajhf");
 			// ft_putendl(ft_itoa(posY));
 			// ft_putendl(ft_itoa(posX));
 			if (tet->coords[y][x] == 1)
 			{
 				map2D[posY + y][posX + x] = tet->letter;
+
 			}
 			++x;
 		}
@@ -57,30 +68,34 @@ void	put(char **map2D, int posX, int posY, t_piece *tet)
 
 char	**smallest_square(char **map2D, int size, t_piece **tet, int count)
 {
-	if (count < 1)
-		return (map2D);
 	ft_putendl("recursive hell");
-
+	ft_print2dstr(map2D, 4);
 	char	**copy = malloc(sizeof(char *) * size);
 	copy[0] = malloc(5);
 	copy[1] = malloc(5);
 	copy[2] = malloc(5);
 	copy[3] = malloc(5);
+
+	if (count < 1)
+		return (copy);
+
 	int		i = -1;
 	while (++i < size)
 		ft_strncpy(copy[i], map2D[i], 4);
+	ft_print2dstr(copy, 4);
 
 	int y = 0;
 	while (y < size)
 	{
-		ft_putstrn(copy[y], 4);
-		ft_putendl("");
+		// ft_putstrn(copy[y], 4);
+		// ft_putendl("");
 		int x = 0;
 		while (x < size)
 		{
 			// ft_putendl("coords");
 			// ft_putendl(ft_itoa(y));
 			// ft_putendl(ft_itoa(x));
+			ft_putstr(ft_itoa(tet[count - 1]->coords[y][x]));
 			if(empty(copy, x, y, tet[count - 1]))
 			{
 				put(copy, x, y, tet[--count]);

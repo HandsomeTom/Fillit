@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 14:57:35 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/11/15 17:49:46 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/11/15 18:51:21 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,35 +57,39 @@ int main(int argc, char **argv)
 			map[1] = malloc(5);
 			map[2] = malloc(5);
 			map[3] = malloc(5);
-			// ft_memset(map[0], '.', size);
-			// ft_memset(map[1], '.', size);
-			// ft_memset(map[2], '.', size);
-			// ft_memset(map[3], '.', size);
+			ft_memset(map[0], '.', size);
+			ft_memset(map[1], '.', size);
+			ft_memset(map[2], '.', size);
+			ft_memset(map[3], '.', size);
 
-			char **solution = smallest_square(map, size, array, 2);
+			ft_print2dstr(map, 4);
+			char **solution = smallest_square(map, size, array, 1);
 
 			// int y = 0;
 			// while (y < 4)
 			// {
-			// 	printf("%s\n", map[y++]);
+			// 	ft_putstrn(solution[y++], 4);
+			// 	ft_putendl("");
 			// }
 
-			// t_piece *temp = make_piece(pieces[0]);
-			// int x = 0;
+			// int y = 0;
 			// while (y < 4)
 			// {
+			// 	int x = 0;
 			// 	while (x < 4)
 			// 	{
-			// 		if (temp->coords[x][y])
-			// 			ft_putchar('#');
-			// 		else
+			// 		// ft_putendl(ft_itoa(y));
+			// 		// ft_putendl(ft_itoa(x));
+			// 		if (solution[y][x] == '.')
 			// 			ft_putchar('.');
+			// 		else
+			// 			ft_putchar('#');
 			// 		++x;
 			// 	}
 			// 	ft_putchar('\n');
-			// 	x = 0;
 			// 	++y;
 			// }
+			ft_putendl("segvault?");
 
 			//ft_putendl("????");
 			// int x = 0;
