@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 14:57:35 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/11/15 18:51:21 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/11/15 18:53:22 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int main(int argc, char **argv)
 			ft_memset(map[3], '.', size);
 
 			ft_print2dstr(map, 4);
-			char **solution = smallest_square(map, size, array, 1);
+			char **solution = smallest_square(map, size, array, 2);
 
 			// int y = 0;
 			// while (y < 4)
