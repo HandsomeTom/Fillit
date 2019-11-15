@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   make_piece.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmaarela <tmaarela@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 13:40:42 by tmaarela          #+#    #+#             */
-/*   Updated: 2019/11/14 13:52:26 by tmaarela         ###   ########.fr       */
+/*   Updated: 2019/11/15 14:43:20 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,39 @@
 ** (all other coords 0)
 */
 
-char	**make_piece(char *str)
+#include "fillit.h"
+
+t_piece	*make_piece(char *str, char letter)
+{
+	t_piece	*temp;
+	int		len;
+	int		x;
+	int		y;
+
+	temp = (t_piece *)malloc(sizeof(t_piece));
+	len = ft_strlen(str);
+	x = 0;
+	y = 0;
+
+	while (y < 4)
+	{
+		while (x < 4)
+		{
+			if (((y * 4) + x) < len
+				&& str[(y * 4) + x] == '#')
+			{
+				temp->coords[x][y] = 1;
+			}
+			else
+			{
+				temp->coords[x][y] = 0;
+			}
+
+			++x;
+		}
+		x = 0;
+		++y;
+	}
+	temp->letter = letter;
+	return (temp);
+}

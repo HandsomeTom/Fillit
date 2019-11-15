@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmaarela <tmaarela@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 15:09:27 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/11/14 13:49:16 by tmaarela         ###   ########.fr       */
+/*   Updated: 2019/11/15 14:47:28 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,17 @@
 
 typedef struct	s_piece
 {
-	char			c;
-	int				x[4];
-	int				y[4];
+	char			letter;
+	int				coords[4][4];
 	struct	s_piece	*next;
 }				t_piece;
 
 char	***input_read(int fd);
-char	**smallest_square(char ***array2D);
+char	**smallest_square(char **map2D, int size, t_piece *tet[], int count);
 void	show_output(char **square);
 int		validate(int fd, char **out, char *file);
 char	*validate_piece(char *array[4]);
 int		validate_file(int fd);
-char	**make_piece(char *str);
+t_piece	*make_piece(char *str, char letter);
 
 #endif

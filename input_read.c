@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 14:57:33 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/11/13 19:49:34 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/11/15 13:42:37 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int		validate(int fd, char *out[26], char *file)
 
 		if ((out[j] = validate_piece(piece)) == NULL)
 			return (-1);
-		ft_putendl(out[j]);
+		// ft_putendl(out[j]);
 		++j;
 		get_next_line(fd, &line);
 		ft_strdel(&line);

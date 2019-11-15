@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 14:57:35 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/11/13 18:53:15 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/11/15 15:04:16 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,46 @@ int main(int argc, char **argv)
 			}
 			// pieces = input_read(fd);
 
-			//ft_putendl("????");
-			int x = 0;
-			while (x < piece_count)
+			ft_putendl("MORE");
+			t_piece *array[2];
+			array[0] = make_piece(pieces[0], 'A');
+			array[1] = make_piece(pieces[1], 'B');
+
+			int size = 4;
+			char map[size][size];
+			ft_memset(map, '.', size*size);
+
+			char **solution = smallest_square(NULL, size, array, 2);
+
+			int y = 0;
+			while (y < 4)
 			{
-				//printf("%s\n", pieces[x++]);
-				x++;
+				printf("%s\n", map[size]);
 			}
+			// t_piece *temp = make_piece(pieces[0]);
+			// int x = 0;
+			// while (y < 4)
+			// {
+			// 	while (x < 4)
+			// 	{
+			// 		if (temp->coords[x][y])
+			// 			ft_putchar('#');
+			// 		else
+			// 			ft_putchar('.');
+			// 		++x;
+			// 	}
+			// 	ft_putchar('\n');
+			// 	x = 0;
+			// 	++y;
+			// }
+
+			//ft_putendl("????");
+			// int x = 0;
+			// while (x < piece_count)
+			// {
+			// 	//printf("%s\n", pieces[x++]);
+			// 	x++;
+			// }
 		}
 	}
 }
