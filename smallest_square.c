@@ -6,17 +6,18 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 11:26:51 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/11/15 18:51:27 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/11/18 13:47:19 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		empty(char **map2D, int posX, int posY, t_piece *tet)
+// int		empty(char **map2D, int posX, int posY, t_piece *tet)
+int		empty(char **map2D, t_xy pos, int size, t_piece *tet)
 {
 	int ok = 0;
 
-	ft_putendl("asdadgasf");
+	ft_putendl("empty?");
 
 	int y = 0;
 	while (y < 4)
@@ -24,25 +25,23 @@ int		empty(char **map2D, int posX, int posY, t_piece *tet)
 		int x = 0;
 		while (x < 4)
 		{
-			ft_putstr(ft_itoa(tet->coords[y][x]));
-			ft_putchar(map2D[posY + y][posX + x]);
-			if (tet->coords[y][x] == 1 && map2D[posY + y][posX + x] == '.')
-			{
+			// ft_putstr(ft_itoa(tet->coords[y][x]));
+			// ft_putchar(map2D[pos.y + y][pos.x + x]);
+			if ((pos.y + y <= size && pos.x + x <= size)
+			&& tet->coords[y][x] == 1
+			&& map2D[pos.y + y][pos.x + x] == '.')
 				++ok;
-				// ft_putchar('o');
-			}
-			// else
-				// ft_putchar('i');
 			++x;
 		}
-		ft_putchar('\n');
+		// ft_putchar('\n');
 		++y;
 	}
-	ft_putendl(ft_itoa(ok));
+	// ft_putendl(ft_itoa(ok));
 	return (ok == 4);
 }
 
-void	put(char **map2D, int posX, int posY, t_piece *tet)
+// void	put(char **map2D, int posX, int posY, t_piece *tet)
+void	put(char **map2D, t_xy pos, t_piece *tet)
 {
 	// ft_putendl("put");
 	int y = 0;
@@ -57,7 +56,7 @@ void	put(char **map2D, int posX, int posY, t_piece *tet)
 			// ft_putendl(ft_itoa(posX));
 			if (tet->coords[y][x] == 1)
 			{
-				map2D[posY + y][posX + x] = tet->letter;
+				map2D[pos.y + y][pos.x + x] = tet->letter;
 
 			}
 			++x;
@@ -95,11 +94,10 @@ char	**smallest_square(char **map2D, int size, t_piece **tet, int count)
 			// ft_putendl("coords");
 			// ft_putendl(ft_itoa(y));
 			// ft_putendl(ft_itoa(x));
-			ft_putstr(ft_itoa(tet[count - 1]->coords[y][x]));
-			if(empty(copy, x, y, tet[count - 1]))
+			// ft_putstr(ft_itoa(tet[count - 1]->coords[y][x]));
+			if (empty(copy, (t_xy){x, y}, size, tet[count - 1]))
 			{
-				put(copy, x, y, tet[--count]);
-
+				put(copy, (t_xy){x, y}, tet[--count]);
 				return (smallest_square(copy, size, &tet[count], count));
 			}
 			++x;

@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 14:57:35 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/11/15 18:53:22 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/11/18 14:21:45 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,12 @@ int main(int argc, char **argv)
 			t_piece *array[2];
 			array[0] = make_piece(pieces[0], 'A');
 			array[1] = make_piece(pieces[1], 'B');
+			printf("w%s h%s\n",
+				ft_itoa(array[0]->width),
+				ft_itoa(array[0]->height));
+			printf("w%s h%s\n",
+				ft_itoa(array[1]->width),
+				ft_itoa(array[1]->height));
 
 			// int y = 0;
 			// while (y < 4)

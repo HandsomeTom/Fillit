@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 15:09:27 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/11/15 18:33:38 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/11/18 13:22:07 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,16 @@ typedef struct	s_piece
 {
 	char			letter;
 	int				coords[4][4];
+	unsigned int	width;
+	unsigned int	height;
 	struct	s_piece	*next;
 }				t_piece;
+
+typedef struct	s_xy
+{
+	int		x;
+	int		y;
+}				t_xy;
 
 char	***input_read(int fd);
 char	**smallest_square(char **map2D, int size, t_piece *tet[], int count);

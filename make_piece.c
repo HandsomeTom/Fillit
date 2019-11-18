@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 13:40:42 by tmaarela          #+#    #+#             */
-/*   Updated: 2019/11/15 17:47:18 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/11/18 14:20:18 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,38 +32,67 @@
 ** (all other coords 0)
 */
 
+#include <stdio.h>
 #include "fillit.h"
 
-t_piece	*make_piece(char *str, char letter)
+static void	set_dimensions(t_piece **piece)
 {
-	t_piece	*temp;
+	unsigned int	width = 0;
+	unsigned int	height = 0;
+
+	// printf("piece adr dim: %p\n", *piece);
+
+	while (height < 4)
+	{
+		width = 0;
+		while (width < 4)
+		{
+			if ((**piece).coords[height][width])
+			{
+				if (width > (**piece).width)
+					(**piece).width += 1;
+				if (height > (**piece).height)
+					(**piece).height += 1;
+			}
+			++width;
+		}
+		++height;
+	}
+	(**piece).width += 1;
+	(**piece).height += 1;
+}
+
+t_piece		*make_piece(char *str, char letter)
+{
+	t_piece	*piece;
 	int		len;
 	int		x;
 	int		y;
 
-	temp = (t_piece *)malloc(sizeof(t_piece));
+	piece = (t_piece *)malloc(sizeof(t_piece));
 	len = ft_strlen(str);
 	x = 0;
 	y = 0;
-
 	while (y < 4)
 	{
 		while (x < 4)
 		{
 			if (((y * 4) + x) < len
-				&& str[(y * 4) + x] == '#')
+			&& str[(y * 4) + x] == '#')
 			{
-				temp->coords[y][x] = 1;
+				piece->coords[y][x] = 1;
 			}
 			else
 			{
-				temp->coords[y][x] = 0;
+				piece->coords[y][x] = 0;
 			}
 			++x;
 		}
 		x = 0;
 		++y;
 	}
-	temp->letter = letter;
-	return (temp);
+	piece->letter = letter;
+	// printf("piece adr src: %p\n", piece);
+	set_dimensions(&piece);
+	return (piece);
 }
