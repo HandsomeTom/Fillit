@@ -6,7 +6,7 @@
 /*   By: tmaarela <tmaarela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 14:57:36 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/11/19 18:55:07 by tmaarela         ###   ########.fr       */
+/*   Updated: 2019/11/19 19:40:09 by tmaarela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,25 @@ int		idk(int index, char *rst)
 	return (ft_strstr_len(rst, piece[index]));
 }
 
+int		validate_size(char *str)
+{
+	int i;
+	int ret;
+
+	ret = 0;
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] == '#')
+			ret++;
+		i++;
+	}
+	if (ret == 4)
+		return (1);
+	else
+		return (-1);
+}
+
 char	*validate_piece(char *array[4])
 {
 	char	*joined;
@@ -58,12 +77,11 @@ char	*validate_piece(char *array[4])
 	ft_memset(str, '\0', 14);
 	i = 0;
 	blocks = 0;
-	
 	joined = (char *)malloc(21);
 	while (i < 4)
 		joined = ft_strjoin(joined, array[i++]);
-
-	ft_putendl(joined);
+	if (validate_size(joined) == -1)
+		return (NULL);
 	i = 0;
 	j = -1;
 	while (i < 19 && j < 0)
