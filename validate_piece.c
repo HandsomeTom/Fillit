@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_piece.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tmaarela <tmaarela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 14:57:36 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/11/19 17:54:07 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/11/19 18:55:07 by tmaarela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,47 +43,43 @@ int		idk(int index, char *rst)
 	piece[16] = ".##.##";
 	piece[17] = "#...##...#";
 	piece[18] = "#..##..#";
-	return (ft_strstr(piece[index], rst) != NULL);
+	return (ft_strstr_len(rst, piece[index]));
 }
 
 char	*validate_piece(char *array[4])
 {
-	int		x;
-	int		y;
+	char	*joined;
 	char	str[14];
 	int		i;
-	int		started;
+	int		j;
 	int		blocks;
 
 
 	ft_memset(str, '\0', 14);
-	x = 0;
 	i = 0;
 	blocks = 0;
-	started = 0;
-	while (x < 4)
+	
+	joined = (char *)malloc(21);
+	while (i < 4)
+		joined = ft_strjoin(joined, array[i++]);
+
+	ft_putendl(joined);
+	i = 0;
+	j = -1;
+	while (i < 19 && j < 0)
+		j = idk(i++ , joined);
+	if (j >= 0)
 	{
-		y = 0;
-		while (y < 4)
+		i = 0;
+		while (i < 14 && blocks < 4)
 		{
-			// if (started || (started = (!started && array[x][y] == '#')))
-			if (!started && array[x][y] == '#')
-				started = TRUE;
-			if (started && blocks < 4 && array[x][y] != '\n')
-			{
-				str[i++] = array[x][y];
-			}
-			if (array[x][y] == '#')
-				++blocks;
-			++y;
+			if (joined[j + i] == '#')
+				blocks++;
+			str[i] = joined[i + j];
+			i++;
 		}
-		++x;
-	}
-	y = 0;
-	while (blocks == 4 && y < 19)
-	{
-		if (idk(y++, str))
-			return (ft_strcpy(ft_strnew(ft_strlen(str)), str));
+		str[i] = '\0';
+		return (ft_strcpy(ft_strnew(ft_strlen(str)), str));
 	}
 	return (NULL);
 }
