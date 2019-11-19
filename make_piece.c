@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 13:40:42 by tmaarela          #+#    #+#             */
-/*   Updated: 2019/11/19 17:17:21 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/11/19 17:47:53 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,6 @@ t_piece		*make_piece(char *str, char letter)
 	{
 		while (x < 4 && ((y * 4) + x) < len)
 		{
-			ft_putstr(&str[(y * 4) + x]);
-
 			if (str[(y * 4) + x] == '#')
 			{
 				piece->coords[y][x] = 1;

@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 11:26:51 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/11/19 17:12:41 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/11/19 17:29:16 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int		empty(char **map2D, t_xy grid, int size, t_piece *tet)
 		int x = 0;
 		while (x < tet->width)
 		{
-			ft_putstr(ft_itoa(tet->coords[y][x]));
+			// ft_putstr(ft_itoa(tet->coords[y][x]));
 			// if (tet->coords[y][x] == 1)
 			// 	printf("tet 0 at: x%d y%d\n", x, y);
 			// if (grid.y + y > size && grid.x + x > size)
