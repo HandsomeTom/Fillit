@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 15:09:27 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/11/18 13:22:07 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/11/18 15:48:34 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ typedef struct	s_xy
 }				t_xy;
 
 char	***input_read(int fd);
-char	**smallest_square(char **map2D, int size, t_piece *tet[], int count);
+char	**smallest_square(char **map2D, int size, t_piece *lst);
+// char	**smallest_square(char **map2D, int size, t_piece *tet[], int count);
 void	show_output(char **square);
 int		validate(int fd, char **out, char *file);
 char	*validate_piece(char *array[4]);
