@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_piece.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmaarela <tmaarela@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 14:57:36 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/11/19 19:40:09 by tmaarela         ###   ########.fr       */
+/*   Updated: 2019/11/19 19:42:19 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 ** Otherwise, or if allocation fails, returns NULL.
 */
 
-int		idk(int index, char *rst)
+int		is_piece(int index, char *rst)
 {
 	char *piece[19];
 
@@ -85,7 +85,7 @@ char	*validate_piece(char *array[4])
 	i = 0;
 	j = -1;
 	while (i < 19 && j < 0)
-		j = idk(i++ , joined);
+		j = is_piece(i++, joined);
 	if (j >= 0)
 	{
 		i = 0;

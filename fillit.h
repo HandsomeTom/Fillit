@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 15:09:27 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/11/18 15:48:34 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/11/19 20:40:07 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,7 @@ int		validate(int fd, char **out, char *file);
 char	*validate_piece(char *array[4]);
 int		validate_file(int fd);
 t_piece	*make_piece(char *str, char letter);
+char	**make_grid(int size);
+char	**copy_grid(char **smaller, int size);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmaarela <tmaarela@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 14:57:35 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/11/19 18:53:04 by tmaarela         ###   ########.fr       */
+/*   Updated: 2019/11/19 21:28:59 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int main(int argc, char **argv)
 			int i = 0;
 			lst_head = make_piece(pieces[0], 'A');
 			lst_head->next = make_piece(pieces[1], 'B');
+			lst_head->next->next = make_piece(pieces[2], 'C');
 			// t_piece *array[2];
 			// array[0] = make_piece(pieces[0], 'A');
 			// array[1] = make_piece(pieces[1], 'B');
@@ -50,22 +51,15 @@ int main(int argc, char **argv)
 			// 	ft_itoa(array[1]->height));
 
 			// why not just 12x12?
-			int size = 4;
-			i = 0;
-			char **map = malloc(sizeof(char *) * size);
-			while (i < size)
-			{
-				map[i] = malloc(size + 1);
-				ft_memset(map[i++], '.', size);
-			}
 
-			ft_putendl("main");
-			ft_print2dstr(map, 4);
-			ft_putendl("");
+			int size = 4;
+			char **map = make_grid(size);
+			ft_putendl("main"); ft_print2dstr(map, size); ft_putendl("");
 
 			char **solution = smallest_square(map, size, lst_head);
+			ft_print2dstr(solution, 5);
 
-			ft_putendl("segvault?");
+			ft_putendl("wew?");
 		}
 	}
 }

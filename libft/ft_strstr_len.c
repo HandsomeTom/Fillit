@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strstr_len.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmaarela <tmaarela@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 18:00:18 by tmaarela          #+#    #+#             */
-/*   Updated: 2019/11/19 18:24:35 by tmaarela         ###   ########.fr       */
+/*   Updated: 2019/11/19 19:46:23 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,4 @@ int		ft_strstr_len(const char *haystack, const char *needle)
 		}
 	}
 	return (-1);
-}
-
-int main()
-{
-	char	text1[50] = "Hello darkness my old friend!";
-	char	text2[50] = "old";
-
-	printf("%d\n", ft_strstr_len(text1, text2));
-	return 0;
 }
