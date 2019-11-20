@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 13:40:42 by tmaarela          #+#    #+#             */
-/*   Updated: 2019/11/20 15:01:20 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/11/20 17:43:08 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,9 @@
 
 static void	set_dimensions(t_piece **piece)
 {
-	unsigned int	width = 0;
-	unsigned int	height = 0;
+	int		width = 0;
+	int		height = 0;
 
-	// printf("piece adr dim: %p\n", *piece);
 
 	while (height < 4)
 	{
@@ -73,7 +72,6 @@ t_piece		*make_piece(char *str, char letter)
 	len = ft_strlen(str);
 	x = 0;
 	y = 0;
-		// ft_putendl("new loop");
 	while (y < 4)
 	{
 		while (x < 4 && ((y * 4) + x) < len)
@@ -88,12 +86,10 @@ t_piece		*make_piece(char *str, char letter)
 			}
 			++x;
 		}
-		// ft_putendl("end loop");
 		x = 0;
 		++y;
 	}
 	piece->letter = letter;
-	// printf("piece adr src: %p\n", piece);
 	set_dimensions(&piece);
 	return (piece);
 }

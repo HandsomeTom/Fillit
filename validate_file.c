@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 12:16:53 by tmaarela          #+#    #+#             */
-/*   Updated: 2019/11/13 18:39:42 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/11/20 18:10:42 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,15 +64,3 @@ int		validate_file(int fd)
 	close(fd);
 	return (retmagic(ret));
 }
-
-// int main(int argc, char **argv)
-// {
-// 	int fd;
-// 	fd = open(argv[1], O_RDONLY);
-// 	printf("RETURN: %d\n", validate_piece(fd));
-// 	return (0);
-// }
-
-		// printf("%d  ", row);
-		// printf("%d  ", i);
-		// printf("%c\n", str[0]);
