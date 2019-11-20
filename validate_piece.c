@@ -6,21 +6,13 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 14:57:36 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/11/19 19:42:19 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/11/21 01:20:20 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-/*
-** Validates that a single 4x4 char grid includes a valid Tetrimino.
-** If the Tetrimino is valid, returns a string that represents the Tetrimino,
-** including the sequence of empty spaces before the next block
-** when reading the grid from top-left to bottom-right.
-** Otherwise, or if allocation fails, returns NULL.
-*/
-
-int		is_piece(int index, char *rst)
+static int	piece_start(int index, char *piece_str)
 {
 	char *piece[19];
 
@@ -43,63 +35,82 @@ int		is_piece(int index, char *rst)
 	piece[16] = ".##.##";
 	piece[17] = "#...##...#";
 	piece[18] = "#..##..#";
-	return (ft_strstr_len(rst, piece[index]));
+	return (ft_strstr_len(piece_str, piece[index]));
 }
 
-int		validate_size(char *str)
+static int	validate_size(char *str)
 {
-	int i;
-	int ret;
+	int		i;
+	int		ok;
 
-	ret = 0;
 	i = 0;
+	ok = 0;
 	while (str[i] != '\0')
 	{
 		if (str[i] == '#')
-			ret++;
-		i++;
+			++ok;
+		++i;
 	}
-	if (ret == 4)
-		return (1);
-	else
-		return (-1);
+	return (ok == 4);
 }
 
-char	*validate_piece(char *array[4])
+static char	*make_piece_str(char *array[4])
 {
-	char	*joined;
-	char	str[14];
+	char	*string;
 	int		i;
-	int		j;
+
+	string = ft_strnew(20);
+	i = 0;
+	while (i < 4)
+	{
+		if (string == NULL)
+			return (NULL);
+		string = ft_strjoin(string, array[i]);
+		++i;
+	}
+	return (string);
+}
+
+static char *cut_piece(char *piece_str, int start)
+{
+	char	string[14];
+	int		i;
 	int		blocks;
 
-
-	ft_memset(str, '\0', 14);
 	i = 0;
 	blocks = 0;
-	joined = (char *)malloc(21);
-	while (i < 4)
-		joined = ft_strjoin(joined, array[i++]);
-	if (validate_size(joined) == -1)
-		return (NULL);
-	i = 0;
-	j = -1;
-	while (i < 19 && j < 0)
-		j = is_piece(i++, joined);
-	if (j >= 0)
+	while (i < 14 && blocks < 4)
 	{
-		i = 0;
-		while (i < 14 && blocks < 4)
-		{
-			if (joined[j + i] == '#')
-				blocks++;
-			str[i] = joined[i + j];
-			i++;
-		}
-		str[i] = '\0';
-		return (ft_strcpy(ft_strnew(ft_strlen(str)), str));
+		if ((string[i] = piece_str[start + i]) == '#')
+			++blocks;
+		++i;
 	}
-	return (NULL);
+	string[i] = '\0';
+	ft_strdel(&piece_str);
+	return (ft_strdup(string));
 }
 
+char		*validate_piece(char *array[4])
+{
+	char	*piece_str;
+	int		start;
+	int		i;
 
+	if ((piece_str = make_piece_str(array)))
+	{
+		if (validate_size(piece_str) == FALSE)
+			ft_strdel(&piece_str);
+		else
+		{
+			i = 0;
+			start = -1;
+			while (i < 19 && start == -1)
+				start = piece_start(i++, piece_str);
+			if (start == -1)
+				ft_strdel(&piece_str);
+			else
+				piece_str = cut_piece(piece_str, start);
+		}
+	}
+	return (piece_str);
+}

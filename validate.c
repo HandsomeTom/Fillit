@@ -6,13 +6,11 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 14:57:33 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/11/20 18:09:34 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/11/21 01:14:58 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fcntl.h>
 #include "fillit.h"
-#include <stdio.h>
 
 int		validate(int fd, char *out[26], char *file)
 {

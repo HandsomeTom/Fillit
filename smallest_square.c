@@ -6,11 +6,10 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 11:26:51 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/11/20 17:42:35 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/11/21 01:14:24 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "fillit.h"
 
 

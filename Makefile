@@ -6,7 +6,7 @@
 #    By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/17 11:11:52 by taho              #+#    #+#              #
-#    Updated: 2019/11/20 18:09:32 by ngontjar         ###   ########.fr        #
+#    Updated: 2019/11/21 01:10:31 by ngontjar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,9 @@ fclean:	clean
 	rm -f $(NAME)
 	@echo "$(NAME): $(RED)$(NAME) was deleted$(END)"
 
+allclean: fclean
+	make -C libft fclean
+
 re:	fclean all
 
 tests: all
@@ -52,7 +55,6 @@ tests: all
 	./$(NAME) tests/valid-T
 	./$(NAME) tests/valid-subject
 	./$(NAME) tests/valid-hard-L
-	./$(NAME) tests/valid-subject
 	@echo "$(END)"
 
 .PHONY: all clean fclean re

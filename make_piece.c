@@ -6,33 +6,10 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 13:40:42 by tmaarela          #+#    #+#             */
-/*   Updated: 2019/11/20 17:43:08 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/11/21 01:13:50 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-** make_piece(string)
-** Stores the information of the piece into a struct s_piece
-** in order to have the coordinates and the representing char
-** for the solver function
-** Example:
-** The piece
-** .#..
-** ###.
-** ....
-** ....
-** Or more accurately, after joining the piece into a single string
-** .#..###.........
-** would be respresented as
-** x[0]y[0] 0
-** x[1]y[0] 1
-** x[0]y[1] 1
-** x[1]y[1] 1
-** x[2]y[1] 1
-** (all other coords 0)
-*/
-
-#include <stdio.h>
 #include "fillit.h"
 
 static void	set_dimensions(t_piece **piece)

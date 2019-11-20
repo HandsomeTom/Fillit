@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 21:08:59 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/10/23 00:07:42 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/11/20 23:20:52 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	split2array(char **data, const char *str, char c)
 		{
 			reading = TRUE;
 			end = ft_strchr(str, c);
-			length = (end ? end - str : ft_strlen(str));
+			length = (end ? (size_t)(end - str) : ft_strlen(str));
 			*data++ = ft_strsub(str, 0, length);
 		}
 		else if (reading && *str == c)

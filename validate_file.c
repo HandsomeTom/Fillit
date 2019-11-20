@@ -6,15 +6,11 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 12:16:53 by tmaarela          #+#    #+#             */
-/*   Updated: 2019/11/20 18:10:42 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/11/21 01:14:39 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <fcntl.h>
-#include <unistd.h>
-#include "libft/libft.h"
+#include "fillit.h"
 
 int		retmagic(int ret)
 {
