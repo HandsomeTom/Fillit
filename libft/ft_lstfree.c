@@ -1,38 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_lstfree.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/17 20:23:11 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/11/08 19:55:55 by ngontjar         ###   ########.fr       */
+/*   Created: 2019/11/08 19:36:16 by ngontjar          #+#    #+#             */
+/*   Updated: 2019/11/08 19:39:03 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-char		*ft_strtrim(const char *str)
+void	ft_lstfree(void *content, size_t content_size)
 {
-	char	*string;
-	size_t	start;
-	size_t	end;
-
-	string = NULL;
-	if (str != NULL)
-	{
-		start = 0;
-		end = ft_strlen(str);
-		while (start < end)
-		{
-			if (!ft_isspace(str[start]))
-				break ;
-			++start;
-		}
-		while (end > start && ft_isspace(str[--end]))
-			;
-		string = ft_strsub(str, start, end - start + 1);
-	}
-	return (string);
+	ft_memset(content, '\0', content_size);
+	free(content);
 }

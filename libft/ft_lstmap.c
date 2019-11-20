@@ -1,38 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/17 20:23:11 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/11/08 19:55:55 by ngontjar         ###   ########.fr       */
+/*   Created: 2019/11/07 17:27:08 by ngontjar          #+#    #+#             */
+/*   Updated: 2019/11/08 20:39:30 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-char		*ft_strtrim(const char *str)
+t_list	*ft_lstmap(t_list *head, t_list *(*func)(t_list *link))
 {
-	char	*string;
-	size_t	start;
-	size_t	end;
+	t_list	*start;
+	t_list	*link;
 
-	string = NULL;
-	if (str != NULL)
+	start = NULL;
+	while (head != NULL && (link = func(head)) != NULL)
 	{
-		start = 0;
-		end = ft_strlen(str);
-		while (start < end)
-		{
-			if (!ft_isspace(str[start]))
-				break ;
-			++start;
-		}
-		while (end > start && ft_isspace(str[--end]))
-			;
-		string = ft_strsub(str, start, end - start + 1);
+		if (start == NULL)
+			start = link;
+		else
+			ft_lstadd_back(start, link);
+		head = head->next;
 	}
-	return (string);
+	if (link == NULL && start != NULL)
+	{
+		ft_lstdel(&start, &ft_lstfree);
+	}
+	return (start);
 }
