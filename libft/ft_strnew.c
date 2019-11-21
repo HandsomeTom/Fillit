@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 16:21:22 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/10/29 21:46:42 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/11/21 06:08:19 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strnew(size_t size)
 	pointer = (char *)malloc(size + 1);
 	if (pointer != NULL)
 	{
-		ft_memset(pointer, 0, size + 1);
+		ft_memset(pointer, '\0', size + 1);
 	}
 	return (pointer);
 }
