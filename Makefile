@@ -6,7 +6,7 @@
 #    By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/17 11:11:52 by taho              #+#    #+#              #
-#    Updated: 2019/11/22 14:50:54 by ngontjar         ###   ########.fr        #
+#    Updated: 2019/11/22 15:16:12 by ngontjar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,5 +57,5 @@ tests: re
 	./$(NAME) tests/valid-hard-L
 	@echo "$(END)"
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re allclean tests
 .PRECIOUS: author
