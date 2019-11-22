@@ -6,13 +6,14 @@
 /*   By: tmaarela <tmaarela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 12:16:53 by tmaarela          #+#    #+#             */
-/*   Updated: 2019/11/22 13:32:41 by tmaarela         ###   ########.fr       */
+/*   Updated: 2019/11/22 13:53:02 by tmaarela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+#include <stdio.h>
 
-int		retmagic(int ret)
+int				retmagic(int ret)
 {
 	if (ret < 225)
 		return (ret / 20);
@@ -20,12 +21,12 @@ int		retmagic(int ret)
 		return (ret / 20.5);
 }
 
-int		file_checker(char *str)
+static int		file_check(char *str)
 {
-	int	i;
+	int i;
 	int row;
 
-	i = 0;
+	i = 1;
 	row = 1;
 	while (*str)
 	{
@@ -49,7 +50,7 @@ int		file_checker(char *str)
 	return (1);
 }
 
-int		validate_file(int fd)
+int				validate_file(int fd)
 {
 	int		ret;
 	char	*str;
@@ -61,8 +62,9 @@ int		validate_file(int fd)
 	ret = ft_strlen(str);
 	if (!(*str))
 		return (-1);
-	if (file_checker(str) < 0)
+	if (file_check(str) < 0)
 		return (-1);
+	free(str);
 	close(fd);
 	return (retmagic(ret));
 }
