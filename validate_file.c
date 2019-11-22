@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_file.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tmaarela <tmaarela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 12:16:53 by tmaarela          #+#    #+#             */
-/*   Updated: 2019/11/21 01:14:39 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/11/22 13:32:41 by tmaarela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,13 @@ int		retmagic(int ret)
 		return (ret / 20.5);
 }
 
-int		validate_file(int fd)
+int		file_checker(char *str)
 {
-	int		ret;
-	int		i;
-	int		row;
-	char	*str;
+	int	i;
+	int row;
 
-	i = 1;
+	i = 0;
 	row = 1;
-	if (!(str = (char *)malloc(550)))
-		return (0);
-	while ((ret = read(fd, str, 549)) > 0)
-		str[ret] = '\0';
-	ret = ft_strlen(str);
-	if (!(*str))
-		return (-1);
 	while (*str)
 	{
 		if (*str != '#' && *str != '.' && *str != '\n' && *str != '\0')
@@ -51,12 +42,27 @@ int		validate_file(int fd)
 			i = 0;
 			row++;
 		}
-		if (i > 4 || (i > 1 && (row % 5 == 0)))
+		if (i > 4 || (i++ > 1 && (row % 5 == 0)))
 			return (-1);
-		i++;
 		str++;
 	}
+	return (1);
+}
 
+int		validate_file(int fd)
+{
+	int		ret;
+	char	*str;
+
+	if (!(str = (char *)malloc(550)))
+		return (0);
+	while ((ret = read(fd, str, 549)) > 0)
+		str[ret] = '\0';
+	ret = ft_strlen(str);
+	if (!(*str))
+		return (-1);
+	if (file_checker(str) < 0)
+		return (-1);
 	close(fd);
 	return (retmagic(ret));
 }
