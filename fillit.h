@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 15:09:27 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/11/22 14:58:38 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/11/22 15:29:54 by tmaarela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <fcntl.h>
 # include "get_next_line.h"
-# include "libft/libft.h"
+# include "libft.h"
 
 typedef struct	s_piece
 {
