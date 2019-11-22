@@ -6,12 +6,11 @@
 /*   By: tmaarela <tmaarela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 12:16:53 by tmaarela          #+#    #+#             */
-/*   Updated: 2019/11/22 13:53:02 by tmaarela         ###   ########.fr       */
+/*   Updated: 2019/11/22 14:40:05 by tmaarela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <stdio.h>
 
 int				retmagic(int ret)
 {

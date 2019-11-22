@@ -3,19 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   make_grid.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tmaarela <tmaarela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 20:20:28 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/11/20 17:39:25 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/11/22 14:42:17 by tmaarela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-char **make_grid(int size)
+char	**make_grid(int size)
 {
-	int i = -1;
-	char	**map = (char **)malloc(sizeof(char **) * size);
+	int		i;
+	char	**map;
+
+	i = -1;
+	map = (char **)malloc(sizeof(char **) * size);
 	if (map)
 	{
 		while (++i < size)
@@ -33,4 +36,3 @@ char **make_grid(int size)
 	}
 	return (map);
 }
-

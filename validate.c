@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tmaarela <tmaarela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 14:57:33 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/11/21 01:14:58 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/11/22 14:43:57 by tmaarela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ int		validate(int fd, char *out[26], char *file)
 	int		i;
 	int		j;
 
-
 	piece_count = validate_file(fd);
-
 	fd = open(file, O_RDONLY);
 	j = 0;
 	while (j < piece_count)
@@ -33,7 +31,6 @@ int		validate(int fd, char *out[26], char *file)
 			get_next_line(fd, &line);
 			piece[i++] = line;
 		}
-
 		if ((out[j] = validate_piece(piece)) == NULL)
 			return (-1);
 		++j;

@@ -3,23 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   make_piece.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tmaarela <tmaarela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 13:40:42 by tmaarela          #+#    #+#             */
-/*   Updated: 2019/11/21 06:00:56 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/11/22 14:40:25 by tmaarela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static void	set_dimensions(t_piece *piece)
+static void		set_dimensions(t_piece *piece)
 {
-	int		width = 0;
-	int		height = 0;
+	int		width;
+	int		height;
 
+	width = 0;
+	height = -1;
 	piece->width = 0;
 	piece->height = 0;
-	while (height < 4)
+	while (height++ < 4)
 	{
 		width = 0;
 		while (width < 4)
@@ -33,13 +35,12 @@ static void	set_dimensions(t_piece *piece)
 			}
 			++width;
 		}
-		++height;
 	}
 	piece->width += 1;
 	piece->height += 1;
 }
 
-static t_piece	*new_piece()
+static t_piece	*new_piece(void)
 {
 	t_piece	*piece;
 	int		x;
@@ -63,12 +64,11 @@ static t_piece	*new_piece()
 			}
 			++y;
 		}
-
 	}
 	return (piece);
 }
 
-t_piece		*make_piece(char *str, char letter)
+t_piece			*make_piece(char *str, char letter)
 {
 	t_piece	*piece;
 	int		len;
