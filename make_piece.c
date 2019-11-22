@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   make_piece.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmaarela <tmaarela@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 13:40:42 by tmaarela          #+#    #+#             */
-/*   Updated: 2019/11/22 14:40:25 by tmaarela         ###   ########.fr       */
+/*   Updated: 2019/11/22 14:56:54 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ static void		set_dimensions(t_piece *piece)
 	int		height;
 
 	width = 0;
-	height = -1;
+	height = 0;
 	piece->width = 0;
 	piece->height = 0;
-	while (height++ < 4)
+	while (height < 4)
 	{
 		width = 0;
 		while (width < 4)
@@ -35,6 +35,7 @@ static void		set_dimensions(t_piece *piece)
 			}
 			++width;
 		}
+		++height;
 	}
 	piece->width += 1;
 	piece->height += 1;

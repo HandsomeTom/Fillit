@@ -6,7 +6,7 @@
 #    By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/17 11:11:52 by taho              #+#    #+#              #
-#    Updated: 2019/11/21 01:10:31 by ngontjar         ###   ########.fr        #
+#    Updated: 2019/11/22 14:50:54 by ngontjar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = fillit
 
 FLAG = -Wall -Wextra -Werror -I libft -L libft -l ft
 
-SRCS =	main.c validate.c validate_piece.c validate_file.c make_piece.c smallest_square.c get_next_line.c make_grid.c ft_piece_add_back.c
+SRCS =	main.c validate.c validate_piece.c validate_file.c make_piece.c smallest_square.c get_next_line.c make_grid.c ft_piece_add_back.c free2d.c
 
 OBJE = $(subst .c,.o,$(SRCS))
 
@@ -41,7 +41,7 @@ allclean: fclean
 
 re:	fclean all
 
-tests: all
+tests: re
 	@echo "$(NAME): $(RED)Testing error files:"
 	./$(NAME) tests/error-0
 	./$(NAME) tests/error-27

@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 14:57:35 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/11/22 13:29:43 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/11/22 15:01:39 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 static t_piece	*build_piece_list(char *pieces[26], int piece_count)
 {
 	t_piece	*lst_head;
+	int		i;
 
-	int i = 0;
+	i = 0;
 	lst_head = make_piece(pieces[i], 'A');
 	ft_strdel(&pieces[i]);
 	while (++i < piece_count)
@@ -27,15 +28,16 @@ static t_piece	*build_piece_list(char *pieces[26], int piece_count)
 	return (lst_head);
 }
 
-int main(int argc, char **argv)
+int				main(int argc, char **argv)
 {
 	char	*pieces[26];
 	int		piece_count;
+	int		fd;
 	t_piece *lst_head;
 
 	if (argc == 2)
 	{
-		int fd = open(argv[1], O_RDONLY);
+		fd = open(argv[1], O_RDONLY);
 		if (fd > 0)
 		{
 			piece_count = validate(fd, pieces, argv[1]);

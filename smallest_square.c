@@ -6,47 +6,79 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 11:26:51 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/11/22 14:03:03 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/11/22 14:52:23 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-
-void	free2d(char **map, int size)
+static int		empty(char **map2d, t_xy grid, int size, t_piece *tet)
 {
-	int i;
+	int		x;
+	int		y;
+	int		ok;
 
-	i = 0;
-	while (i < size)
+	ok = 0;
+	y = 0;
+	while (y < tet->height)
 	{
-		free(map[i]);
-		++i;
+		x = 0;
+		while (x < tet->width)
+		{
+			if ((grid.y + y < size && grid.x + x < size)
+			&& tet->coords[y][x]
+			&& map2d[grid.y + y][grid.x + x] == '.')
+				++ok;
+			++x;
+		}
+		++y;
 	}
-	free(map);
+	return (ok == 4);
 }
 
-void	solve(t_piece *lst)
+static void		put(char **map2d, t_xy pos, t_piece *tet)
 {
-	char	**map2d;
-	int		size;
+	int x;
+	int y;
 
-	size = 2;
-	map2d = make_grid(size);
-
-	while (smallest_square(map2d, size, lst) == FALSE)
+	y = 0;
+	while (y < tet->height)
 	{
-		free2d(map2d, size);
-		++size;
-		map2d = make_grid(size);
+		x = 0;
+		while (x < tet->width)
+		{
+			if (tet->coords[y][x] == 1)
+			{
+				map2d[pos.y + y][pos.x + x] = tet->letter;
+			}
+			++x;
+		}
+		++y;
 	}
-	ft_print2dstr(map2d, size);
-	free2d(map2d, size);
-	while (1);
-	exit(0);
 }
 
-int		smallest_square(char **map2d, int size, t_piece *lst)
+static void		rip(char **map2d, t_xy pos, t_piece *tet)
+{
+	int x;
+	int y;
+
+	y = 0;
+	while (y < tet->height)
+	{
+		x = 0;
+		while (x < tet->width)
+		{
+			if (tet->coords[y][x] == 1)
+			{
+				map2d[pos.y + y][pos.x + x] = '.';
+			}
+			++x;
+		}
+		++y;
+	}
+}
+
+static int		smallest_square(char **map2d, int size, t_piece *lst)
 {
 	int		x;
 	int		y;
@@ -74,65 +106,20 @@ int		smallest_square(char **map2d, int size, t_piece *lst)
 	return (FALSE);
 }
 
-int		empty(char **map2d, t_xy grid, int size, t_piece *tet)
+void			solve(t_piece *lst)
 {
-	int ok = 0;
+	char	**map2d;
+	int		size;
 
-
-	int y = 0;
-	while (y < tet->height)
+	size = 2;
+	map2d = make_grid(size);
+	while (smallest_square(map2d, size, lst) == FALSE)
 	{
-		int x = 0;
-		while (x < tet->width)
-		{
-			if ((grid.y + y < size && grid.x + x < size)
-			&& tet->coords[y][x]
-			&& map2d[grid.y + y][grid.x + x] == '.')
-			{
-				++ok;
-			}
-
-			++x;
-		}
-		// ft_putchar('\n');
-		++y;
+		free2d(map2d, size);
+		++size;
+		map2d = make_grid(size);
 	}
-	return (ok == 4);
-}
-
-// void	put(char **map2d, int posX, int posY, t_piece *tet)
-void	put(char **map2d, t_xy pos, t_piece *tet)
-{
-	int y = 0;
-	while (y < tet->height)
-	{
-		int x = 0;
-		while (x < tet->width)
-		{
-			if (tet->coords[y][x] == 1)
-			{
-				map2d[pos.y + y][pos.x + x] = tet->letter;
-			}
-			++x;
-		}
-		++y;
-	}
-}
-
-void	rip(char **map2d, t_xy pos, t_piece *tet)
-{
-	int y = 0;
-	while (y < tet->height)
-	{
-		int x = 0;
-		while (x < tet->width)
-		{
-			if (tet->coords[y][x] == 1)
-			{
-				map2d[pos.y + y][pos.x + x] = '.';
-			}
-			++x;
-		}
-		++y;
-	}
+	ft_print2dstr(map2d, size);
+	free2d(map2d, size);
+	exit(0);
 }

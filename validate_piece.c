@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 14:57:36 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/11/22 14:30:19 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/11/22 15:02:13 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static char	*make_piece_str(char *piece[4])
 	return (string);
 }
 
-static char *cut_piece(char *piece_str, int start)
+static char	*cut_piece(char *piece_str, int start)
 {
 	char	string[14];
 	int		i;
