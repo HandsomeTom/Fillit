@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 14:57:36 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/11/21 01:20:20 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/11/22 14:30:19 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,23 +38,23 @@ static int	piece_start(int index, char *piece_str)
 	return (ft_strstr_len(piece_str, piece[index]));
 }
 
-static int	validate_size(char *str)
+static int	validate_size(char *piece_str)
 {
 	int		i;
 	int		ok;
 
 	i = 0;
 	ok = 0;
-	while (str[i] != '\0')
+	while (piece_str[i] != '\0')
 	{
-		if (str[i] == '#')
+		if (piece_str[i] == '#')
 			++ok;
 		++i;
 	}
 	return (ok == 4);
 }
 
-static char	*make_piece_str(char *array[4])
+static char	*make_piece_str(char *piece[4])
 {
 	char	*string;
 	int		i;
@@ -65,7 +65,8 @@ static char	*make_piece_str(char *array[4])
 	{
 		if (string == NULL)
 			return (NULL);
-		string = ft_strjoin(string, array[i]);
+		string = ft_strcat(string, piece[i]);
+		ft_strdel(&piece[i]);
 		++i;
 	}
 	return (string);
@@ -90,13 +91,13 @@ static char *cut_piece(char *piece_str, int start)
 	return (ft_strdup(string));
 }
 
-char		*validate_piece(char *array[4])
+char		*validate_piece(char *piece[4])
 {
 	char	*piece_str;
 	int		start;
 	int		i;
 
-	if ((piece_str = make_piece_str(array)))
+	if ((piece_str = make_piece_str(piece)))
 	{
 		if (validate_size(piece_str) == FALSE)
 			ft_strdel(&piece_str);
