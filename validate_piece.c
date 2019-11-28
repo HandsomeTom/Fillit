@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 14:57:36 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/11/22 15:02:13 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/11/28 13:47:40 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	piece_start(int index, char *piece_str)
 	piece[2] = "##..##";
 	piece[3] = "##..#...#";
 	piece[4] = "###...#";
-	piece[5] = "#...#..##";
+	piece[5] = ".#...#..##";
 	piece[6] = "#...###";
 	piece[7] = "#...#...##";
 	piece[8] = "###.#";
@@ -34,7 +34,7 @@ static int	piece_start(int index, char *piece_str)
 	piece[15] = "##...##";
 	piece[16] = ".##.##";
 	piece[17] = "#...##...#";
-	piece[18] = "#..##..#";
+	piece[18] = ".#..##..#";
 	return (ft_strstr_len(piece_str, piece[index]));
 }
 
